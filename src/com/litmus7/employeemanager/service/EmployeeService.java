@@ -7,23 +7,26 @@ import com.litmus7.employeemanager.dto.Employee;
 
 public class EmployeeService {
 	private EmployeeDAO employeeDAO=new EmployeeDAO();
-	public int createEmployee(Employee emp) {
-		return employeeDAO.createEmployee(emp);
+	public int createEmployee(Employee employee) {
+		//check if id exists
+		if(getEmployeeById(employee.getId())!=null)
+			return 0;
+		return employeeDAO.createEmployee(employee);
 	}
 
 	public List<Employee> getAllEmployees() {
 		return employeeDAO.getAllEmployees();
 	}
 
-	public Employee getEmployeeById(int empId) {
-		return employeeDAO.getEmployeeById(empId);
+	public Employee getEmployeeById(int employeeId) {
+		return employeeDAO.getEmployeeById(employeeId);
 	}
 
-	public int deleteEmployee(int empId) {
-		return employeeDAO.deleteEmployee(empId);
+	public int deleteEmployee(int employeeId) {
+		return employeeDAO.deleteEmployee(employeeId);
 	}
 
-	public int updateEmployee(Employee emp) {
-		return employeeDAO.updateEmployee(emp);
+	public int updateEmployee(Employee employee) {
+		return employeeDAO.updateEmployee(employee);
 	}
 }
