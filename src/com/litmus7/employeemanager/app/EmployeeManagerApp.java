@@ -11,7 +11,6 @@ import com.litmus7.employeemanager.dto.Response;
 
 public class EmployeeManagerApp {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
 
 			EmployeeController controller = new EmployeeController();
@@ -25,38 +24,38 @@ public class EmployeeManagerApp {
 
 				switch (choice) {
 				case "1":
-					String[] employeeDetails=EmployeeManagerApp.getEmployeeFromUser(bufferedReader);
-					Response<Boolean> response = controller.createNewEmployee(employeeDetails);
+					Employee employee=EmployeeManagerApp.getEmployeeFromUser(bufferedReader);
+					Response<Boolean> response = controller.createNewEmployee(employee);
 					System.out.println(response.getMessage());
 					break;
 				case "2":
-					Response<List<Employee>> getAllEmployeeResponse=controller.getAllEmployees();
-					if (getAllEmployeeResponse.getStatus() == 200) {
+					Response<List<Employee>> employeesResponse=controller.getAllEmployees();
+					if (employeesResponse.getStatus() == 200) {
 						System.out.println("Employee Details : ");
 						System.out.printf("%-5s| %-10s | %-10s| %-10s| %-30s | %-10s| %-10s\n", "ID", "First Name",
 								"Last Name", "Mobile", "Email", "Join Date", "Active Status");
 						System.out.println(
 								"------------------------------------------------------------------------------------------------");
-						for (Employee e : getAllEmployeeResponse.getData()) {
+						for (Employee e : employeesResponse.getData()) {
 							System.out.printf("%-5s| %-10s | %-10s| %-10s| %-30s | %-10s| %-10s\n", e.getId() + " ",
 									e.getFirstName(), e.getLastName(), e.getMobileNumber(), e.getEmail(),
 									e.getJoiningDate() + " ", e.isActiveStatus() + "");
 						}
 					} else {
-						System.out.println(getAllEmployeeResponse.getMessage());
+						System.out.println(employeesResponse.getMessage());
 					}
 					break;
 				case "3":
 					System.out.println("Enter id of required employee: ");
 					Integer employeeId=Integer.parseInt(bufferedReader.readLine());
-					Response<Employee> getEmployeeResponse = controller.getEmployeeById(employeeId);
-					if (getEmployeeResponse.getStatus()==200) {
-						Employee employee=getEmployeeResponse.getData();
-						System.out.printf("%-5s| %-10s | %-10s| %-10s| %-30s | %-10s| %-10s\n", employee.getId() + " ",
-								employee.getFirstName(), employee.getLastName(), employee.getMobileNumber(), employee.getEmail(),
-								employee.getJoiningDate() + " ", employee.isActiveStatus() + "");
+					Response<Employee> employeeResponse = controller.getEmployeeById(employeeId);
+					if (employeeResponse.getStatus()==200) {
+						Employee employee1=employeeResponse.getData();
+						System.out.printf("%-5s| %-10s | %-10s| %-10s| %-30s | %-10s| %-10s\n", employee1.getId() + " ",
+								employee1.getFirstName(), employee1.getLastName(), employee1.getMobileNumber(), employee1.getEmail(),
+								employee1.getJoiningDate() + " ", employee1.isActiveStatus() + "");
 					}else {
-						System.out.println(getEmployeeResponse.getMessage());
+						System.out.println(employeeResponse.getMessage());
 					}
 					
 					break;
@@ -67,8 +66,8 @@ public class EmployeeManagerApp {
 					System.out.println(response.getMessage());
 					break;
 				case "5":
-					employeeDetails=EmployeeManagerApp.getEmployeeFromUser(bufferedReader);
-					response=controller.updateEmployee(employeeDetails);
+					employee=EmployeeManagerApp.getEmployeeFromUser(bufferedReader);
+					response=controller.updateEmployee(employee);
 					System.out.println(response.getMessage());
 					break;
 				default:
@@ -83,24 +82,31 @@ public class EmployeeManagerApp {
 			System.out.println("Error in reading Input: "+e1.getMessage());
 		}
 	}
-	private static String[] getEmployeeFromUser(BufferedReader bufferedReader) throws IOException {
-		String[] employeeDetails=new String[7];
-		System.out.println("Enter Details of employee:");
-		System.out.println("Id:");
-		employeeDetails[0] = bufferedReader.readLine();
-		System.out.println("First Name:");
-		employeeDetails[1] = bufferedReader.readLine();
-		System.out.println("Last Name:");
-		employeeDetails[2] = bufferedReader.readLine();
-		System.out.println("Mobile Number:");
-		employeeDetails[3] = bufferedReader.readLine();
-		System.out.println("Email id:");
-		employeeDetails[4] = bufferedReader.readLine();
-		System.out.println("Joining Date(YYYY-MM-DD):");
-		employeeDetails[5] = bufferedReader.readLine();
-		System.out.println("Active status (true/false):");
-		employeeDetails[6] = bufferedReader.readLine();
-		return employeeDetails;
+	private static Employee getEmployeeFromUser(BufferedReader bufferedReader) throws IOException {
+		 System.out.println("Enter Details of employee:");
+	        System.out.print("Id: ");
+	        int id = Integer.parseInt(bufferedReader.readLine());
+
+	        System.out.print("First Name: ");
+	        String firstName = bufferedReader.readLine();
+
+	        System.out.print("Last Name: ");
+	        String lastName = bufferedReader.readLine();
+
+	        System.out.print("Mobile Number: ");
+	        String mobileNumber = bufferedReader.readLine();
+
+	        System.out.print("Email: ");
+	        String email = bufferedReader.readLine();
+
+	        System.out.print("Joining Date (YYYY-MM-DD): ");
+	        String joiningDate = bufferedReader.readLine();
+
+	        System.out.print("Active status (true/false): ");
+	        boolean activeStatus = Boolean.parseBoolean(bufferedReader.readLine());
+
+	        return new Employee(id, firstName, lastName, mobileNumber, email, joiningDate, activeStatus);
+	    
 		
 	}
 
