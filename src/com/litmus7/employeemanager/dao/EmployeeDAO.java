@@ -9,11 +9,14 @@ import java.util.List;
 
 import com.litmus7.employeemanager.constant.SqlConstants;
 import com.litmus7.employeemanager.dto.Employee;
+import com.litmus7.employeemanager.exception.EmployeeDAOException;
+import com.litmus7.employeemanager.exception.EmployeeNotFoundException;
 import com.litmus7.employeemanager.util.DBConnectionUtil;
+
 
 public class EmployeeDAO {
 
-	public int createEmployee(Employee emp) {
+	public int createEmployee(Employee emp) throws EmployeeDAOException {
 		try (Connection connection = DBConnectionUtil.getConnection()) {
 
 			PreparedStatement insertQueryStatement = connection.prepareStatement(SqlConstants.INSERT_QUERY);
@@ -28,11 +31,11 @@ public class EmployeeDAO {
 			return insertQueryStatement.executeUpdate();
 
 		} catch (SQLException e) {
-			return 0;
+			throw new EmployeeDAOException("Database Error while inserting employee ", e);
 		}
 	}
 
-	public List<Employee> getAllEmployees() {
+	public List<Employee> getAllEmployees() throws EmployeeDAOException {
 		try (Connection connection = DBConnectionUtil.getConnection()) {
 			PreparedStatement selectQuery = connection.prepareStatement(SqlConstants.SELECT_ALL_QUERY);
 			ResultSet resultSet = selectQuery.executeQuery();
@@ -45,40 +48,40 @@ public class EmployeeDAO {
 			}
 			return employees;
 		} catch (SQLException e) {
-			return null;
+			throw new EmployeeDAOException("Database Error while fetching all employee ", e);
 		}
 	}
 
-	public Employee getEmployeeById(int empId) {
+	public Employee getEmployeeById(int employeeID) throws EmployeeDAOException, EmployeeNotFoundException {
 		try (Connection connection = DBConnectionUtil.getConnection()) {
 			PreparedStatement selectQuery = connection.prepareStatement(SqlConstants.SELECT_WITH_ID_QUERY);
-			selectQuery.setInt(1, empId);
+			selectQuery.setInt(1, employeeID);
 			ResultSet resultSet = selectQuery.executeQuery();
-			while (resultSet.next()) {
+			if(resultSet.next()) {
 				return new Employee(resultSet.getInt(SqlConstants.EMP_ID_COLUMN_NAME), resultSet.getString(SqlConstants.FIRST_NAME_COLUMN_NAME),
 						resultSet.getString(SqlConstants.LAST_NAME_COLUMN_NAME), resultSet.getString(SqlConstants.MOBILE_NO_COLUMN_NAME),
 						resultSet.getString(SqlConstants.EMAIL_ID_COLUMN_NAME), resultSet.getDate(SqlConstants.JOINING_DATE_COLUMN_NAME).toString(),
 						resultSet.getBoolean(SqlConstants.ACTIVE_STATUS_COLUMN_NAME));
+			}else {
+				throw new EmployeeNotFoundException("Can't find employee with ID "+employeeID);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			return null;
+			throw new EmployeeDAOException("Database Error while fetching employee ", e);
 		}
-		return null;
 	}
 
-	public int deleteEmployee(int empId) {
+	public int deleteEmployee(int employeeID) throws EmployeeDAOException {
 		try (Connection connection = DBConnectionUtil.getConnection()) {
 			PreparedStatement deleteQuery = connection.prepareStatement(SqlConstants.DELETE_WITH_ID_QUERY);
-			deleteQuery.setInt(1, empId);
+			deleteQuery.setInt(1, employeeID);
 			return deleteQuery.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			return 0;
+			throw new EmployeeDAOException("Database Error while deleting employee ", e);
 		}
 	}
 
-	public int updateEmployee(Employee emp) {
+	public int updateEmployee(Employee emp) throws EmployeeDAOException {
 		try (Connection connection = DBConnectionUtil.getConnection()) {
 			PreparedStatement updateQuery = connection.prepareStatement(SqlConstants.UPDATE_WITH_ID_QUERY);
 			updateQuery.setInt(7, emp.getId());
@@ -92,7 +95,7 @@ public class EmployeeDAO {
 			return updateQuery.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			return 0;
+			throw new EmployeeDAOException("Database Error while updating employee ", e);
 		}
 	}
 
