@@ -5,6 +5,11 @@ public class ApplicationStatusConstant {
     public static final int SUCCESS = 200;
     public static final int BAD_REQUEST = 400;
     public static final int SERVER_ERROR = 500;
+    
+    public static final int DUPLICATE_ENTRY=409;
+    public static final int NOT_FOUND=404;
+    
+    
 
 
     public static final String MSG_SUCCESS_CREATE = "Employee created successfully";
@@ -21,4 +26,6 @@ public class ApplicationStatusConstant {
 
     public static final String MSG_SUCCESS_SELECT_ALL = "Employees fetched successfully";
     public static final String MSG_ERROR_SELECT_ALL = "Failed to fetch employees";
+    
+    
 }

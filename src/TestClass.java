@@ -1,14 +1,14 @@
+import org.apache.logging.log4j.*;
+
 import com.litmus7.employeemanager.controller.EmployeeController;
 import com.litmus7.employeemanager.dto.Employee;
 import com.litmus7.employeemanager.dto.Response;
 
 public class TestClass {
-
+	private static Logger mainLogger = LogManager.getLogger(TestClass.class);
     public static void main(String[] args) {
         
         EmployeeController controller = new EmployeeController();
-
-
          Response<Boolean> response= controller.deleteEmployee(11);
         Employee validEmployee = new Employee(
             11,
@@ -23,7 +23,7 @@ public class TestClass {
             10, 
             "J",
             "D",
-            "9876543210", 
+            "9876540", 
             "john@example.com",
             "2020-01-01", 
             true

@@ -3,6 +3,12 @@ package com.litmus7.employeemanager.dto;
 import java.time.LocalDate;
 
 public class Employee {
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", mobileNumber="
+				+ mobileNumber + ", email=" + email + ", joiningDate=" + joiningDate + ", activeStatus=" + activeStatus
+				+ "]";
+	}
 	private int id;
 	private String firstName;
 	private String lastName;

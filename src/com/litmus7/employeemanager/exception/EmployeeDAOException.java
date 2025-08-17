@@ -1,9 +1,13 @@
 package com.litmus7.employeemanager.exception;
 
-public class EmployeeDAOException extends Exception {
-	private static final long serialVersionUID = 1L;
+public class EmployeeDAOException extends EmployeeAppException {
 
-	public EmployeeDAOException(String message, Throwable cause) {
-		super(message, cause);
-	}	
+	private static final long serialVersionUID = 1L;
+	public EmployeeDAOException(int statusCode, String message, Throwable cause) {
+		super(statusCode, message, cause);
+	}
+
+	public EmployeeDAOException(int statusCode, String message) {
+		super(statusCode, message);
+	}
 }

@@ -1,0 +1,64 @@
+2025-08-17 15:20:52 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Request to delete employee with ID: 11
+2025-08-17 15:20:52 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Service: Deleting employee with ID: 11
+2025-08-17 15:20:52 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Service: Fetching employee by ID: 11
+2025-08-17 15:20:52 [main] INFO  com.litmus7.employeemanager.dao.EmployeeDAO - Fetching employee with ID: 11
+2025-08-17 15:20:53 [main] DEBUG com.litmus7.employeemanager.dao.EmployeeDAO - Employee found with ID: 11
+2025-08-17 15:20:53 [main] DEBUG com.litmus7.employeemanager.service.EmployeeService - Employee found: 11
+2025-08-17 15:20:53 [main] INFO  com.litmus7.employeemanager.dao.EmployeeDAO - Deleting employee with ID: 11
+2025-08-17 15:20:53 [main] DEBUG com.litmus7.employeemanager.dao.EmployeeDAO - Rows deleted: 1
+2025-08-17 15:20:53 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Employee deleted successfully: 11
+2025-08-17 15:20:53 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Employee with ID: 11 deleted successfully
+2025-08-17 15:22:01 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Request to create new employee: 11
+2025-08-17 15:22:01 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Service: Creating employee with ID: 11
+2025-08-17 15:22:01 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Service: Fetching employee by ID: 11
+2025-08-17 15:22:01 [main] INFO  com.litmus7.employeemanager.dao.EmployeeDAO - Fetching employee with ID: 11
+2025-08-17 15:22:03 [main] WARN  com.litmus7.employeemanager.dao.EmployeeDAO - No employee found with ID: 11
+2025-08-17 15:22:03 [main] ERROR com.litmus7.employeemanager.service.EmployeeService - DAO error while fetching employee: 11 Can't find employee with ID 11
+2025-08-17 15:22:03 [main] DEBUG com.litmus7.employeemanager.service.EmployeeService - Employee ID 11 not found, proceeding with creation
+2025-08-17 15:22:03 [main] INFO  com.litmus7.employeemanager.dao.EmployeeDAO - Creating new employee with ID: 11
+2025-08-17 15:22:04 [main] DEBUG com.litmus7.employeemanager.dao.EmployeeDAO - Rows inserted: 1
+2025-08-17 15:22:04 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Employee created successfully: 11
+2025-08-17 15:22:04 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Successfully created employee: 11
+2025-08-17 15:22:06 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Request to create new employee: 10
+2025-08-17 15:22:07 [main] WARN  com.litmus7.employeemanager.controller.EmployeeController - Invalid employee data: Employee [id=10, firstName=J, lastName=D, mobileNumber=9876540, email=john@example.com, joiningDate=2020-01-01, activeStatus=true] Invalid mobile number: 9876540
+2025-08-17 15:22:56 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Request to fetch all employees
+2025-08-17 15:22:56 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Service: Fetching all employees
+2025-08-17 15:22:56 [main] INFO  com.litmus7.employeemanager.dao.EmployeeDAO - Fetching all employees from database
+2025-08-17 15:22:58 [main] DEBUG com.litmus7.employeemanager.dao.EmployeeDAO - Fetched 4 employees
+2025-08-17 15:22:58 [main] DEBUG com.litmus7.employeemanager.service.EmployeeService - Fetched 4 employees from DAO
+2025-08-17 15:22:58 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Fetched employees - Count: 4
+2025-08-17 15:23:12 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Request to fetch employee with ID: 11
+2025-08-17 15:23:12 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Service: Fetching employee by ID: 11
+2025-08-17 15:23:12 [main] INFO  com.litmus7.employeemanager.dao.EmployeeDAO - Fetching employee with ID: 11
+2025-08-17 15:23:13 [main] DEBUG com.litmus7.employeemanager.dao.EmployeeDAO - Employee found with ID: 11
+2025-08-17 15:23:13 [main] DEBUG com.litmus7.employeemanager.service.EmployeeService - Employee found: 11
+2025-08-17 15:23:13 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Employee found: 11
+2025-08-17 15:23:31 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Request to fetch employee with ID: -5
+2025-08-17 15:23:36 [main] WARN  com.litmus7.employeemanager.controller.EmployeeController - Invalid employee ID: -5
+2025-08-17 15:23:46 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Request to fetch employee with ID: 9999
+2025-08-17 15:23:55 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Service: Fetching employee by ID: 9999
+2025-08-17 15:24:00 [main] INFO  com.litmus7.employeemanager.dao.EmployeeDAO - Fetching employee with ID: 9999
+2025-08-17 15:24:49 [main] WARN  com.litmus7.employeemanager.dao.EmployeeDAO - No employee found with ID: 9999
+2025-08-17 15:25:25 [main] ERROR com.litmus7.employeemanager.service.EmployeeService - DAO error while fetching employee: 9999 Can't find employee with ID 9999
+2025-08-17 15:25:49 [main] WARN  com.litmus7.employeemanager.controller.EmployeeController - Employee not found: 9999 Service failure:Can't find employee with ID 9999
+2025-08-17 15:25:58 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Request to delete employee with ID: 1
+2025-08-17 15:25:58 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Service: Deleting employee with ID: 1
+2025-08-17 15:25:58 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Service: Fetching employee by ID: 1
+2025-08-17 15:25:58 [main] INFO  com.litmus7.employeemanager.dao.EmployeeDAO - Fetching employee with ID: 1
+2025-08-17 15:25:59 [main] WARN  com.litmus7.employeemanager.dao.EmployeeDAO - No employee found with ID: 1
+2025-08-17 15:25:59 [main] ERROR com.litmus7.employeemanager.service.EmployeeService - DAO error while fetching employee: 1 Can't find employee with ID 1
+2025-08-17 15:25:59 [main] WARN  com.litmus7.employeemanager.controller.EmployeeController - Attempt to delete non-existent employee with ID: 1 Service failure:Can't find employee with ID 1
+2025-08-17 15:26:00 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Request to delete employee with ID: -1
+2025-08-17 15:26:00 [main] WARN  com.litmus7.employeemanager.controller.EmployeeController - Invalid employee ID: -1
+2025-08-17 15:26:08 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Request to update employee: 11
+2025-08-17 15:26:08 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Service: Updating employee with ID: 11
+2025-08-17 15:26:08 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Service: Fetching employee by ID: 11
+2025-08-17 15:26:08 [main] INFO  com.litmus7.employeemanager.dao.EmployeeDAO - Fetching employee with ID: 11
+2025-08-17 15:26:09 [main] DEBUG com.litmus7.employeemanager.dao.EmployeeDAO - Employee found with ID: 11
+2025-08-17 15:26:09 [main] DEBUG com.litmus7.employeemanager.service.EmployeeService - Employee found: 11
+2025-08-17 15:26:09 [main] INFO  com.litmus7.employeemanager.dao.EmployeeDAO - Updating employee with ID: 11
+2025-08-17 15:26:10 [main] DEBUG com.litmus7.employeemanager.dao.EmployeeDAO - Rows updated: 1
+2025-08-17 15:26:10 [main] INFO  com.litmus7.employeemanager.service.EmployeeService - Employee updated successfully: 11
+2025-08-17 15:26:10 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Employee updated successfully: 11
+2025-08-17 15:26:13 [main] INFO  com.litmus7.employeemanager.controller.EmployeeController - Request to update employee: 10
+2025-08-17 15:26:13 [main] WARN  com.litmus7.employeemanager.controller.EmployeeController - Invalid employee data for update: Employee [id=10, firstName=J, lastName=D, mobileNumber=9876540, email=john@example.com, joiningDate=2020-01-01, activeStatus=true] Invalid mobile number: 9876540
